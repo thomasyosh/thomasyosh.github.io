@@ -70,6 +70,7 @@ function operandKeyHandler(value) {
 
 function clearBtnHandler() {
     displayList = [];
+    operandList = [];
     numberList = [];
     display.value = 0;
 }
