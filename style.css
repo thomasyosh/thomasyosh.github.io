@@ -1,0 +1,12 @@
+button {
+    font-size: 24px;
+}
+
+input[type=text] {
+    width: 8%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    text-align: right;
+  }

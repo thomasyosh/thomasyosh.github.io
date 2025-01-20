@@ -61,7 +61,7 @@ function operandKeyHandler(value) {
         }
         displayResult(result);
         numberList = [];
-        numberList[0] = result;
+        numberList.push(result);
     }
 
     operandList.push(value);
