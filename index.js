@@ -42,14 +42,26 @@ function keyPadHandler(value) {
 
 function operandKeyHandler(value) {
     displayList = [];
-
+    let result = 0;
     numberList.push(Number(display.value));
-
     if (operandList[operandList.length - 1] === value) {
-        switch (value){
+        switch (value) {
             case "+":
-                addSum(numberList[numberList.length - 2], numberList[numberList.length - 1]);
+                result = addSum(
+                    numberList[numberList.length - 2],
+                    numberList[numberList.length - 1]
+                );
+                break;
+            case "-":
+                result = minusSum(
+                    numberList[numberList.length - 2],
+                    numberList[numberList.length - 1]
+                );
+                break;
         }
+        displayResult(result);
+        numberList = [];
+        numberList[0] = result;
     }
 
     operandList.push(value);
@@ -64,9 +76,12 @@ function clearBtnHandler() {
 
 function addSum(num1, num2) {
     result = num1 + num2;
-    numberList = [];
-    numberList[0] = result;
-    return displayResult(num1 + num2);
+    return num1 + num2;
+}
+
+function minusSum(num1, num2) {
+    result = num1 - num2;
+    return num1 - num2;
 }
 
 function displayResult(resultValue) {
