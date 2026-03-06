@@ -1,90 +1,34 @@
-const keyPad = document.querySelectorAll(".keyPad");
-const display = document.getElementById("displayMonitor");
-const operandKey = document.querySelectorAll(".operandKey");
-const clearBtn = document.getElementById("clearBtn");
-var displayList = [];
-var numberList = [];
-var operandList = [];
+const ppsEx = document.getElementById("ppsExternal");
+const ppsInt = document.getElementById("ppsInternal");
+const modal = document.getElementById("myModal");
 
 
-keyPad.forEach(item => item.addEventListener(
-    "click",
-    () => keyPadHandler(item.value)
-)
-);
+ppsInt.addEventListener("click", () => {
+    modal.showModal();
+    window.open("https://www.ppshk.com/pps/pps2/revamp2/template/pc/login_c.jsp", "ytplayer");
+    // window.open("https://www.ppshk.com/pps/pps2/revamp2/template/pc/login_c.jsp", "ytplayer");
+});
 
-operandKey.forEach(item => item.addEventListener(
-    "click",
-    () => operandKeyHandler(item.value)
-)
-);
+ppsEx.addEventListener('click', () => {
+        const url = "https://www.ppshk.com/pps/pps2/revamp2/template/pc/login_c.jsp";
+        const windowName = "ExternalPageWindow";
+        
+        // Define the size and features of the new window
+        const windowFeatures = "width=800,height=600,left=200,top=200,popup=yes";
 
-clearBtn.addEventListener(
-    "click",
-    () => clearBtnHandler()
-)
+        // Open the URL in the new popup window
+        window.open(url, windowName, windowFeatures);
+    });
 
-function displayHandler(value) {
-    display.value = "";
-    if (value == "." && displayList.length == 0) {
-        displayList.push("0");
-        displayList.push(".");
-    } else displayList.push(value);
-    // update value shown in the display monitor
-    display.value = displayList.join("");
-}
 
-function keyPadHandler(value) {
-    if (displayList.includes(".") && value == ".")
-        return;
-    displayHandler(value);
-}
-
-function operandKeyHandler(value) {
-    displayList = [];
-    let result = 0;
-    numberList.push(Number(display.value));
-    if (operandList[operandList.length - 1] === value) {
-        switch (value) {
-            case "+":
-                result = addSum(
-                    numberList[numberList.length - 2],
-                    numberList[numberList.length - 1]
-                );
-                break;
-            case "-":
-                result = minusSum(
-                    numberList[numberList.length - 2],
-                    numberList[numberList.length - 1]
-                );
-                break;
-        }
-        displayResult(result);
-        numberList = [];
-        numberList.push(result);
+modal.addEventListener("click", (e) => {
+    const dialogDimensions = modal.getBoundingClientRect();
+    if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+    ) {
+        modal.close();
     }
-
-    operandList.push(value);
-
-}
-
-function clearBtnHandler() {
-    displayList = [];
-    operandList = [];
-    numberList = [];
-    display.value = 0;
-}
-
-function addSum(num1, num2) {
-    result = num1 + num2;
-    return num1 + num2;
-}
-
-function minusSum(num1, num2) {
-    result = num1 - num2;
-    return num1 - num2;
-}
-
-function displayResult(resultValue) {
-    display.value = resultValue;
-}
+});
