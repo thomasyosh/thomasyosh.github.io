@@ -1,44 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<link rel="stylesheet" href="style.css">
+<script type="module" src="https://unpkg.com/x-frame-bypass"></script>
+
 <body>
-    <table>
-        <input type="text" value="0" id="displayMonitor" readonly/>
-        <tr>
-            <td><button class="keyPad" value="7">7</button></td>
-            <td><button class="keyPad" value="8">8</button></td>
-            <td><button class="keyPad" value="9">9</button></td>
-            <td><button class="operandKey" value="+">+</button></td>
-        </tr>
+    <button id="ppsExternal">
+        PPS Payment (External Browser)
+    </button>
 
-        <tr>
-            <td><button class="keyPad" value="4">4</button></td>
-            <td><button class="keyPad" value="5">5</button></td>
-            <td><button class="keyPad" value="6">6</button></td>
-            <td><button class="operandKey" value="-">-</button></td>
-        </tr>
+    <button id="ppsInternal">
+        PPS Payment (Internal Page)
+    </button>
 
-        <tr>
-            <td><button class="keyPad" value="1">1</button></td>
-            <td><button class="keyPad" value="2">2</button></td>
-            <td><button class="keyPad" value="3">3</button></td>
-            <td><button class="operandKey" value="*">*</button></td>
-        </tr>
+    <dialog id="myModal">
+        <h2>繳費靈</h2>
+        <!-- <p>Are you sure you want to proceed? This is a native HTML modal.</p> -->
+        <div class="container">
+            <iframe id="ytplayer" name="ytplayer" type="text/html" width="640" height="360" frameborder="0">
+            </iframe>
+        </div>
+    </dialog>
 
-        <tr>
-            <td><button class="keyPad" value=".">.</button></td>
-            <td><button class="keyPad" value="0">0</button></td>
-            <td><button id="clearBtn" class="funcKey" value="C">C</button></td>
-            <td><button class="operandKey" value="/">/</button></td>
-            <td><button class="equalKey" value="=">=</button></td>
-        </tr>
 
-    </table>
+
+
 </body>
-<script src="index.js"></script>
+<script src="popup.js"></script>
+
 </html>
